@@ -12,29 +12,24 @@ class PersonalNoteApp extends Component {
       keyword: "",
     };
 
-    this.onDeleteEventHandler = this.onDeleteEventHandler.bind(this);
-    this.onArchiveEventHandler = this.onArchiveEventHandler.bind(this);
-    this.onSearchHandler = this.onSearchHandler.bind(this);
+    this.onDeleteNoteHandler = this.onDeleteNoteHandler.bind(this);
+    this.onArchiveNoteHandler = this.onArchiveNoteHandler.bind(this);
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+    this.onSearchHandler = this.onSearchHandler.bind(this);
   }
-  onDeleteEventHandler(id) {
+  onDeleteNoteHandler(id) {
     const notes = this.state.notes.filter((note) => note.id !== id);
     this.setState({ notes });
   }
 
-  onArchiveEventHandler(id) {
+  onArchiveNoteHandler(id) {
     const notes = this.state.notes;
     const index = notes.findIndex((note) => note.id === id);
     notes[index].archived = !notes[index].archived;
     this.setState({ notes });
   }
 
-  onSearchHandler(event) {
-    const keyword = event.target.value.toLowerCase();
-    this.setState({ keyword });
-  }
-
-  onAddNoteHandler({ title, body, remaining }) {
+  onAddNoteHandler({ title, body }) {
     this.setState((prevState) => {
       return {
         notes: [
@@ -43,12 +38,17 @@ class PersonalNoteApp extends Component {
             id: +new Date(),
             title,
             body,
-            createdAt: "2022-04-14T04:27:34.572Z",
+            createdAt: new Date(),
             archived: false,
           },
         ],
       };
     });
+  }
+
+  onSearchHandler(event) {
+    const keyword = event.target.value.toLowerCase();
+    this.setState({ keyword });
   }
 
   render() {
@@ -59,8 +59,8 @@ class PersonalNoteApp extends Component {
           notes={this.state.notes}
           format={showFormattedDate}
           keyword={this.state.keyword}
-          onDelete={this.onDeleteEventHandler}
-          onArchive={this.onArchiveEventHandler}
+          onDelete={this.onDeleteNoteHandler}
+          onArchive={this.onArchiveNoteHandler}
           addNote={this.onAddNoteHandler}
         />
       </div>

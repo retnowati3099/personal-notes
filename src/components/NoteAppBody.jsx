@@ -5,6 +5,7 @@ import NotesList from "./NotesList";
 function NoteAppBody({ notes, format, keyword, onDelete, onArchive, addNote }) {
   const activeNote = notes.filter((note) => note.archived == false);
   const archiveNote = notes.filter((note) => note.archived == true);
+
   return (
     <div className="note-app__body ">
       <h2>Buat catatan</h2>

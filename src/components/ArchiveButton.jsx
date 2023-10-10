@@ -1,8 +1,8 @@
 import React from "react";
 
 function ArchiveButton({ id, archived, onArchive }) {
-  console.log(archived);
   const text = archived ? "Pindahkan" : "Arsipkan";
+
   return (
     <button
       id={id}
