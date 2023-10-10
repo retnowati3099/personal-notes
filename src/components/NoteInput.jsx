@@ -7,7 +7,7 @@ export default class NoteInput extends Component {
     this.state = { title: "", body: "", remaining: 50 };
 
     this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
-    this.onBodyChangeEventHandler = this.onBodyChangeEventandler.bind(this);
+    this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
     this.OnSubmitEventHandler = this.OnSubmitEventHandler.bind(this);
   }
 
@@ -29,7 +29,7 @@ export default class NoteInput extends Component {
 
   OnSubmitEventHandler(event) {
     event.preventDefault();
-    this.props.addNode(this.state);
+    this.props.addNote(this.state);
   }
 
   render() {
