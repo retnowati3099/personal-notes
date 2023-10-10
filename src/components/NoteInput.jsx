@@ -43,11 +43,13 @@ export default class NoteInput extends Component {
           type="text"
           placeholder="Ini adalah judul ..."
           className="note-input__title "
+          value={this.state.title}
           onChange={this.onTitleChangeEventHandler}
         />
         <textarea
           placeholder="Tuliskan catatanmu di sini ..."
           className="note-input__body"
+          value={this.state.body}
           onChange={this.onBodyChangeEventHandler}
         ></textarea>
         <button type="submit">Buat</button>
