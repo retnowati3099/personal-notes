@@ -3,21 +3,20 @@ import React, { Component } from "react";
 export default class NoteInput extends Component {
   constructor(props) {
     super(props);
+
     this.state = { title: "", remaining: 50 };
 
     this.onTitleChangeHandler = this.onTitleChangeHandler.bind(this);
   }
 
   onTitleChangeHandler(event) {
-    this.setState(() => {
-      return {
-        title: event.target.value,
-      };
-    });
+    const title = event.target.value;
+    this.setState({ title });
   }
   render() {
-    const {title, remaining} = this.state
+    const { title, remaining } = this.state;
     const remain = remaining - title.length;
+
     return (
       <div className="note-input">
         <form className="note-input">

@@ -2,7 +2,7 @@ import React from "react";
 import NoteInput from "./NoteInput";
 import NotesList from "./NotesList";
 
-function NoteAppBody({ notes, format, onDelete }) {
+function NoteAppBody({ notes, format, keyword, onDelete, onArchive }) {
   const activeNote = notes.filter((note) => note.archived == false);
   const archiveNote = notes.filter((note) => note.archived == true);
   return (
@@ -11,14 +11,26 @@ function NoteAppBody({ notes, format, onDelete }) {
       <NoteInput />
       <h2>Catatan Aktif</h2>
       {activeNote.length > 0 ? (
-        <NotesList notes={activeNote} format={format} onDelete={onDelete} />
+        <NotesList
+          notes={activeNote}
+          format={format}
+          keyword={keyword}
+          onDelete={onDelete}
+          onArchive={onArchive}
+        />
       ) : (
         <p className="notes-list__empty-message">Tidak ada catatan</p>
       )}
 
       <h2>Arsip</h2>
       {archiveNote.length > 0 ? (
-        <NotesList notes={archiveNote} format={format} onDelete={onDelete} />
+        <NotesList
+          notes={archiveNote}
+          format={format}
+          keyword={keyword}
+          onDelete={onDelete}
+          onArchive={onArchive}
+        />
       ) : (
         <p className="notes-list__empty-message">Tidak ada catatan</p>
       )}
