@@ -15,6 +15,7 @@ class PersonalNoteApp extends Component {
     this.onDeleteEventHandler = this.onDeleteEventHandler.bind(this);
     this.onArchiveEventHandler = this.onArchiveEventHandler.bind(this);
     this.onSearchHandler = this.onSearchHandler.bind(this);
+    this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
   }
   onDeleteEventHandler(id) {
     const notes = this.state.notes.filter((note) => note.id !== id);
@@ -33,6 +34,23 @@ class PersonalNoteApp extends Component {
     this.setState({ keyword });
   }
 
+  onAddNoteHandler({ title, body, remaining }) {
+    this.setState((prevState) => {
+      return {
+        notes: [
+          ...prevState.notes,
+          {
+            id: +new Date(),
+            title,
+            body,
+            createdAt: "2022-04-14T04:27:34.572Z",
+            archived: false,
+          },
+        ],
+      };
+    });
+  }
+
   render() {
     return (
       <div>
@@ -43,6 +61,7 @@ class PersonalNoteApp extends Component {
           keyword={this.state.keyword}
           onDelete={this.onDeleteEventHandler}
           onArchive={this.onArchiveEventHandler}
+          addNote={this.onAddNoteHandler}
         />
       </div>
     );
